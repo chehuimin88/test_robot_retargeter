@@ -45,15 +45,15 @@ ik_match_table: {
   "right_thigh": ["LINK_KNEE_PITCH_R", 0.0, 3.0],
   "right_calf": ["LINK_ANKLE_ROLL_R", 30, 3],
 
-  "head": ["LINK_HEAD_YAW", 0.0, 0.2],
+  "head": ["LINK_HEAD_YAW", 0.0, 3],
 
-  "left_shoulder": ["LINK_SHOULDER_ROLL_L", 15, 0.3],
+  "left_shoulder": ["LINK_SHOULDER_ROLL_L", 30, 3],
   "left_arm": ["LINK_ELBOW_PITCH_L", 10.0, 3],
-  "left_fore_arm": ["left_hand", 10, 3],
+  "left_fore_arm": ["left_hand", 10, 1],
 
-  "right_shoulder": ["LINK_SHOULDER_ROLL_R", 15, 0.3],
+  "right_shoulder": ["LINK_SHOULDER_ROLL_R", 30, 3],
   "right_arm": ["LINK_ELBOW_PITCH_R", 10.0, 3],
-  "right_fore_arm": ["right_hand", 10, 3]
+  "right_fore_arm": ["right_hand", 10, 1]
 
 }
 
