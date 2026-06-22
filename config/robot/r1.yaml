@@ -42,15 +42,15 @@ ik_match_table: {
   "right_thigh": ["right_knee_link", 0.0, 3.0],
   "right_calf": ["right_ankle_roll_link", 30, 3],
 
-  "head": ["head_yaw_link", 0.0, 0.2],
+  "head": ["head_yaw_link", 0.0, 3],
 
-  "left_shoulder": ["left_shoulder_sphere", 15, 3],
+  "left_shoulder": ["left_shoulder_sphere", 30, 3],
   "left_arm": ["left_elbow_link", 10.0, 3],
-  "left_fore_arm": ["left_hand", 10, 3],
+  "left_fore_arm": ["left_hand", 10, 1],
 
-  "right_shoulder": ["right_shoulder_sphere", 15, 3],
+  "right_shoulder": ["right_shoulder_sphere", 30, 3],
   "right_arm": ["right_elbow_link", 10.0, 3],
-  "right_fore_arm": ["right_hand", 10, 3]
+  "right_fore_arm": ["right_hand", 10, 1]
 }
 
 contact_vel_calculate_window: 6

@@ -159,10 +159,10 @@ Direct video link:
 Example:
 
 ```bash
-VIS_ROBOTS="jaka_pi h2 t800 pnd_adam" \
-ROBOT_MOTION_FILE="dataset/bones_g1/grab_walk_ff_180_001__A550_M.csv" \
+VIS_ROBOTS="jaka_pi r1 booster_t1 hightorque_hi" \
+ROBOT_MOTION_FILE="dataset/lafan1_g1/dance2_subject4.csv" \
 ORIGIN_ROBOT="g1" \
-SOURCE_FPS=120 \
+SOURCE_FPS=30 \
 RENDER_FPS=30 \
 ./bash/retarget_from_robot.sh
 ```
