@@ -14,17 +14,17 @@ Output format (LAFAN1-like):
 - Joint values are radians.
 
 Terminal examples:
-    # Run from project root and convert all CSV files under dataset/bones_g1
+    # Run from project root and convert all CSV files under dataset/bones_g1_origin
     python scripts/convert_bones_to_lafan1.py
 
     # Convert one file only
     python scripts/convert_bones_to_lafan1.py \
-        --input-csv dataset/bones_g1/body_check_001__A548_M.csv
+        --input-csv dataset/bones_g1_origin/body_check_001__A548_M.csv
 
     # Customize input/output directories and root scale
     python scripts/convert_bones_to_lafan1.py \
-        --input-root dataset/bones_g1 \
-        --output-root output_data/robot_motion/bones_g1
+        --input-root dataset/bones_g1_origin \
+        --output-root dataset/bones_g1
 """
 
 from __future__ import annotations
@@ -37,8 +37,8 @@ from pathlib import Path
 SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent
 
-DEFAULT_INPUT_ROOT = PROJECT_ROOT / "dataset" / "bones_g1"
-DEFAULT_OUTPUT_ROOT = PROJECT_ROOT / "output_data" / "robot_motion" / "bones_g1"
+DEFAULT_INPUT_ROOT = PROJECT_ROOT / "dataset" / "bones_g1_origin"
+DEFAULT_OUTPUT_ROOT = PROJECT_ROOT / "dataset" / "bones_g1"
 
 
 def euler_xyz_deg_to_quat_xyzw(rx_deg: float, ry_deg: float, rz_deg: float) -> tuple[float, float, float, float]:

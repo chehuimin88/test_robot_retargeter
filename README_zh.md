@@ -134,7 +134,7 @@ SMPL_MOTION_FILE="dataset/ACCAD/Form_1_stageii.npz" \
 
 ```bash
 VIS_ROBOTS="jaka_pi h2 t800 agibot_x2" \
-ROBOT_MOTION_FILE="dataset/lafan1_g1/dance1_subject2.csv" \
+ROBOT_MOTION_FILE="dataset/bones_g1/body_check_001__A548_M.csv" \
 ORIGIN_ROBOT="g1" \
 ./bash/retarget_from_robot.sh
 ```
