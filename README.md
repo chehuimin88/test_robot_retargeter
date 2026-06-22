@@ -118,6 +118,13 @@ SMPL_MOTION_FILE="dataset/ACCAD/Form_1_stageii.npz" \
 
 ### 2) Retarget from source-robot motion
 
+Demo video:
+
+<video src="retarget_from_g1_dance1_subject2.mp4" controls muted playsinline width="100%"></video>
+
+If the embedded player is not available on your platform, open the file directly:
+[retarget_from_g1_dance1_subject2.mp4](retarget_from_g1_dance1_subject2.mp4)
+
 ```bash
 ./bash/retarget_from_robot.sh
 ```
