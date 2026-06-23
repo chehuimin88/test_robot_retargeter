@@ -6,10 +6,10 @@ as a CSV under output_data/robot_motion.
 
 Usage:
     # Run with a specific robot config from terminal
-    python scripts/robot_retarget.py --config h2.yaml
+    python scripts/robot_retarget.py --config config/robot/h2.yaml
 
     # Override render_debug from terminal (highest priority)
-    python scripts/robot_retarget.py --config config/robot/jaka_pi.yaml --render-debug
+    python scripts/robot_retarget.py --config config/robot/agibot_x2.yaml --render-debug
 
     # Override keypoints_path from terminal by motion stem only
     python scripts/robot_retarget.py --config config/robot/h2.yaml --keypoints-name body_check_001__A548_M_from_g1

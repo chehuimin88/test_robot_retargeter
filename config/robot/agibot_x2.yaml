@@ -1,7 +1,7 @@
 robot_xml_path: "asset/robot/agibot_x2/x2_ultra.xml"
 verbose: True
 render_debug: False
-keypoints_path: "output_data/keypoints/agibot_x2/dance1_subject2_from_g1_keypoints.pkl"
+keypoints_path: "output_data/keypoints/agibot_x2/fallAndGetUp1_subject1_from_g1_keypoints.pkl"
 joints_limit_offset_degrees:
   knee_joint: [10.0, 0.0]
   elbow_joint: [20.0, 0.0]
@@ -50,7 +50,7 @@ ik_match_table: {
   "right_thigh": ["right_knee_link", 0.0, 3.0],
   "right_calf": ["right_ankle_roll_link", 30, 3],
 
-  "head": ["head_pitch_link", 0.0, 0.5],
+  "head": ["head_pitch_link", 0.0, 3],
 
   "left_shoulder": ["left_shoulder_roll_link", 30, 3],
   "left_arm": ["left_elbow_link", 10.0, 3],

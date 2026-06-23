@@ -15,9 +15,9 @@ Usage:
 	# Specify source/target configs and motion file
 	python scripts/robot_replay.py \
 		--source-robot-config config/robot/g1.yaml \
-		--target-robot-config config/robot/t800.yaml \
-		--motion-file output_data/robot_motion/bones_g1/body_check_001__A548_M.csv \
-		--fps 120
+		--target-robot-config config/robot/DR02.yaml \
+		--motion-file dataset/lafan1_g1/dance1_subject1.csv \
+		--fps 30
 """
 
 from __future__ import annotations
