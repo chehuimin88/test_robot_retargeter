@@ -5,7 +5,7 @@ keypoints_path: "output_data/keypoints/g1/body_check_001__A548_M_from_g1_keypoin
 joints_limit_offset_degrees:
   knee_joint: [10.0, 0.0]
   elbow_joint: [20.0, 0.0]
-knee_angle_offset_degrees: 10.0
+knee_angle_offset_degrees: 15.0
 
 robot_links:
   left_hip: [hips_sphere, left_hip_roll_link]

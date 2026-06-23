@@ -37,7 +37,6 @@ contact_height_threshold: 0.025
 contact_height_lpf_alpha: 0.15
 contact_pos_fixed_factor: 15.0
 
-
 ik_match_table: {
   "hips_mean": ["pelvis", 100, 0],  
 
