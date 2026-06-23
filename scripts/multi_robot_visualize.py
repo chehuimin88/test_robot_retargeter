@@ -23,46 +23,48 @@ import time
 import mujoco
 import mujoco.viewer
 import numpy as np
+import yaml
 from tqdm import tqdm
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, ".."))
 
-# Robot name -> MJCF path
-ROBOT_XML = {
-    "g1": os.path.join(
-        SCRIPT_DIR, "..", "asset", "robot", "g1_description", "mjcf", "g1.xml"
-    ),
-    "h2": os.path.join(SCRIPT_DIR, "..", "asset", "robot", "h2_description", "H2.xml"),
-    "r1": os.path.join(SCRIPT_DIR, "..", "asset", "robot", "r1_description", "R1.xml"),
-    "t800": os.path.join(SCRIPT_DIR, "..", "asset", "robot", "t800", "xml", "serial_t800.xml"),
-    "pm01": os.path.join(
-        SCRIPT_DIR, "..", "asset", "robot", "pm01_edu", "xml", "serial_pm01_edu.xml"
-    ),
-    "unitree_a2": os.path.join(
-        SCRIPT_DIR, "..", "asset", "robot", "a2_description", "a2.xml"),
-    "agibot_x2": os.path.join(
-        SCRIPT_DIR, "..", "asset", "robot", "agibot_x2", "x2_ultra.xml"),
-    "limx_oli": os.path.join(
-        SCRIPT_DIR, "..", "asset", "robot", "HU_D04_description", "xml", "HU_D04_01.xml"
-    ),
-    "pnd_adam": os.path.join(
-        SCRIPT_DIR, "..", "asset", "robot", "pnd_adam_lite", "adam_lite.xml"
-    ),
-    "booster_t1": os.path.join(
-        SCRIPT_DIR, "..", "asset", "robot", "booster_t1", "T1_serial.xml"
-    ),
-    "jaka_pi": os.path.join(
-        SCRIPT_DIR, "..", "asset", "robot", "jaka_pi", "Khan_mini_simplified.xml"
-    ),
-    "hightorque_hi": os.path.join(
-        SCRIPT_DIR, "..", "asset", "robot", "hightorque_hi", "hi_25dof.xml"
-    ),
-    "unitree_a2w": os.path.join(
-        SCRIPT_DIR, "..", "asset", "robot", "a2w_description", "a2_wheel.xml"
-    ),
-}
+# Robot config directory: each robot has a <robot_name>.yaml that contains a
+# "robot_xml_path" field (relative to the project root) pointing to its MJCF.
+ROBOT_CONFIG_DIR = os.path.join(PROJECT_DIR, "config", "robot")
 
 MOTION_DIR = os.path.join(SCRIPT_DIR, "..", "output_data", "robot_motion")
+
+
+def available_robots() -> list[str]:
+    """List robot names by scanning config/robot/*.yaml (filename = robot name)."""
+    if not os.path.isdir(ROBOT_CONFIG_DIR):
+        return []
+    names = [
+        os.path.splitext(f)[0]
+        for f in os.listdir(ROBOT_CONFIG_DIR)
+        if f.endswith(".yaml")
+    ]
+    return sorted(names)
+
+
+def get_robot_xml(robot: str) -> str:
+    """Resolve a robot's MJCF path by reading robot_xml_path from its yaml config.
+
+    The config file is config/robot/<robot>.yaml and robot_xml_path is stored
+    relative to the project root.
+    """
+    config_path = os.path.join(ROBOT_CONFIG_DIR, f"{robot}.yaml")
+    if not os.path.isfile(config_path):
+        raise FileNotFoundError(f"Robot config not found: {config_path}")
+    with open(config_path, "r", encoding="utf-8") as f:
+        config = yaml.safe_load(f)
+    xml_path = config.get("robot_xml_path")
+    if not xml_path:
+        raise KeyError(f"'robot_xml_path' missing in config: {config_path}")
+    if not os.path.isabs(xml_path):
+        xml_path = os.path.join(PROJECT_DIR, xml_path)
+    return xml_path
 
 
 def load_motion(csv_path: str) -> np.ndarray:
@@ -164,7 +166,7 @@ def build_combined_spec(robots: list[str]) -> mujoco.MjSpec:
     )
 
     for robot in robots:
-        robot_spec = mujoco.MjSpec.from_file(ROBOT_XML[robot])
+        robot_spec = mujoco.MjSpec.from_file(get_robot_xml(robot))
         for j in robot_spec.joints:
             if j.type == mujoco.mjtJoint.mjJNT_FREE:
                 j.name = "floating_base_joint"
@@ -213,8 +215,8 @@ def main() -> None:
                 #  "hightorque_hi",
                  
                  ],
-        choices=list(ROBOT_XML.keys()),
-        help="List of robot names to visualize, choices: " + ", ".join(ROBOT_XML.keys()),
+        choices=available_robots(),
+        help="List of robot names to visualize, choices: " + ", ".join(available_robots()),
     )
     parser.add_argument(
         "--motion_dir",
