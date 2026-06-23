@@ -204,7 +204,7 @@
               <geom class="collision" type="mesh" rgba="0.298039 0.298039 0.298039 1" mesh="left_shoulder_pitch_link"/>
               <body name="left_shoulder_roll_link" pos="-0.000499991 0.0495 0">
                 <inertial pos="0.000621 -0.000183 -0.078842" quat="0.706401 0.00587444 0.00386922 0.707777" mass="0.706556" diaginertia="0.00549904 0.00540092 0.000539037"/>
-                <joint name="left_shoulder_roll_joint" pos="0 0 0" axis="1 0 0" range="-0.061 2.993" actuatorfrcrange="-36 36"/>
+                <joint name="left_shoulder_roll_joint" pos="0 0 0" axis="1 0 0" range="-0.961 2.993" actuatorfrcrange="-36 36"/>
                 <geom class="visual" type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="left_shoulder_roll_link"/>
                 <geom class="collision" type="mesh" rgba="1 1 1 1" mesh="left_shoulder_roll_link"/>
                 <body name="left_shoulder_yaw_link" pos="0.00122424 0 -0.121195" quat="0.999996 0 -0.00298782 0">
@@ -246,7 +246,7 @@
               <geom class="collision" type="mesh" rgba="0.298039 0.298039 0.298039 1" mesh="right_shoulder_pitch_link"/>
               <body name="right_shoulder_roll_link" pos="-0.0005 -0.0495 0" quat="1 0 7.70015e-05 0">
                 <inertial pos="0.000598 0.000185 -0.079928" quat="0.707532 0.00175816 0.00375761 0.706669" mass="0.696963" diaginertia="0.00548904 0.0054003 0.000529664"/>
-                <joint name="right_shoulder_roll_joint" pos="0 0 0" axis="1 0 0" range="-2.993 0.061" actuatorfrcrange="-36 36"/>
+                <joint name="right_shoulder_roll_joint" pos="0 0 0" axis="1 0 0" range="-2.993 0.961" actuatorfrcrange="-36 36"/>
                 <geom class="visual" type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="right_shoulder_roll_link"/>
                 <geom class="collision" type="mesh" rgba="1 1 1 1" mesh="right_shoulder_roll_link"/>
                 <body name="right_shoulder_yaw_link" pos="0.0005 0 -0.1212">
